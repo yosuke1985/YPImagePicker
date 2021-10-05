@@ -13,7 +13,11 @@ import PryntTrimmerView
 public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
     
     @IBOutlet weak var trimBottomItem: YPMenuItem!
-    @IBOutlet weak var coverBottomItem: YPMenuItem!
+    @IBOutlet weak var coverBottomItem: YPMenuItem! {
+        didSet {
+            coverBottomItem.isHidden = true
+        }
+    }
     
     @IBOutlet weak var videoView: YPVideoView!
     @IBOutlet weak var trimmerView: TrimmerView!

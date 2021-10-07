@@ -31,7 +31,7 @@
                         <constraint firstAttribute="width" constant="187.5" id="v6L-4U-7pR"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qy9-MY-67C" userLabel="RightButton" customClass="YPMenuItem" customModule="Example" customModuleProvider="target">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qy9-MY-67C" userLabel="RightButton" customClass="YPMenuItem" customModule="Example" customModuleProvider="target">
                     <rect key="frame" x="187.5" y="627" width="187.5" height="40"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

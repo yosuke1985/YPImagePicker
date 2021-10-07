@@ -59,7 +59,9 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
         
         coverThumbSelectorView.thumbBorderColor = YPConfig.colors.coverSelectorBorderColor
         
-        trimBottomItem.textLabel.text = YPConfig.wordings.trim
+        trimBottomItem.textLabel.text = "トリミング"
+//        trimBottomItem.textLabel.text = YPConfig.wordings.trim
+
         coverBottomItem.textLabel.text = YPConfig.wordings.cover
 
         trimBottomItem.button.addTarget(self, action: #selector(selectTrim), for: .touchUpInside)
@@ -79,7 +81,8 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
         didChangeThumbPosition(CMTime(seconds: 1, preferredTimescale: 1))
         
         // Navigation bar setup
-        title = YPConfig.wordings.trim
+//        title = YPConfig.wordings.trim
+        title = "トリミング"
         if isFromSelectionVC {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: YPConfig.wordings.cancel,
                                                                style: .plain,
@@ -171,7 +174,8 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
     // MARK: - Bottom buttons
 
     @objc public func selectTrim() {
-        title = YPConfig.wordings.trim
+//        title = YPConfig.wordings.trim
+        title = "トリミング"
         
         trimBottomItem.select()
         coverBottomItem.deselect()

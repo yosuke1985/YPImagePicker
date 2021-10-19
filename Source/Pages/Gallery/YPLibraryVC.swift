@@ -94,7 +94,7 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
             return
         }
 
-        if YPConfig.library.defaultMultipleSelection || selectedItems.count > 1 {
+        if YPConfig.library.defaultMultipleSelection || selectedItems.count >= 0 {
             showMultipleSelection()
         }
     }
@@ -198,8 +198,8 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
 
         if multipleSelectionEnabled {
             if selectedItems.isEmpty && YPConfig.library.preSelectItemOnMultipleSelection,
-				delegate?.libraryViewShouldAddToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0),
-														  numSelections: selectedItems.count) ?? true {
+                delegate?.libraryViewShouldAddToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0),
+                                                          numSelections: selectedItems.count) ?? true {
                 let asset = mediaManager.fetchResult[currentlySelectedIndex]
                 selectedItems = [
                     YPLibrarySelection(index: currentlySelectedIndex,
@@ -209,10 +209,11 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
                                        assetIdentifier: asset.localIdentifier)
                 ]
             }
-        } else {
-            selectedItems.removeAll()
-            addToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0))
         }
+//            else {
+//            selectedItems.removeAll()
+//            addToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0))
+//        }
         
         v.assetViewContainer.setMultipleSelectionMode(on: multipleSelectionEnabled)
         v.collectionView.reloadData()
@@ -475,7 +476,7 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
                     case .image:
                         self.fetchImageAndCrop(for: asset.asset, withCropRect: asset.cropRect) { image, exifMeta in
                             let photo = YPMediaPhoto(image: image.resizedImageIfNeeded(),
-													 exifMeta: exifMeta, asset: asset.asset)
+                                                     exifMeta: exifMeta, asset: asset.asset)
                             resultMediaItems.append(YPMediaItem.photo(p: photo))
                             asyncGroup.leave()
                         }

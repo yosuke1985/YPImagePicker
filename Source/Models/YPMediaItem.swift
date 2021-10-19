@@ -12,6 +12,7 @@ import AVFoundation
 import Photos
 
 public class YPMediaPhoto {
+    public var id: UUID = UUID()
     
     public var image: UIImage { return modifiedImage ?? originalImage }
     public let originalImage: UIImage
@@ -36,6 +37,7 @@ public class YPMediaPhoto {
 }
 
 public class YPMediaVideo {
+    public var id: UUID = UUID()
     
     public var thumbnail: UIImage
     public var url: URL

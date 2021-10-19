@@ -65,8 +65,9 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
         refreshMediaRequest()
 
         v.assetViewContainer.multipleSelectionButton.isHidden = !(YPConfig.library.maxNumberOfItems > 1)
+
         v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsLimit,
-											  YPConfig.library.maxNumberOfItems)
+                                              YPConfig.library.maxNumberOfItems)
         
         if let preselectedItems = YPConfig.library.preselectedItems,
            !preselectedItems.isEmpty {
@@ -123,6 +124,8 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        v.assetViewContainer.multipleSelectionButton.isHidden = true
+
         v.assetViewContainer.squareCropButton
             .addTarget(self,
                        action: #selector(squareCropButtonTapped),
@@ -140,9 +143,10 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
         }
         
         // Activate multiple selection when using `minNumberOfItems`
-        if YPConfig.library.minNumberOfItems > 1 {
-            multipleSelectionButtonTapped()
-        }
+//        if YPConfig.library.minNumberOfItems > 1 {
+        multipleSelectionButtonTapped()
+//        }
+        
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -189,8 +193,9 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
             return
         }
         
-        multipleSelectionEnabled = !multipleSelectionEnabled
-        
+//        multipleSelectionEnabled = !multipleSelectionEnabled
+        multipleSelectionEnabled = true
+
         if multipleSelectionEnabled {
             if selectedItems.isEmpty && YPConfig.library.preSelectItemOnMultipleSelection,
 				delegate?.libraryViewShouldAddToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0),
@@ -297,7 +302,7 @@ internal class YPLibraryVC: UIViewController, YPPermissionCheckable {
         let updateCropInfo = {
             self.updateCropInfo()
         }
-		
+        
         // MARK: add a func(updateCropInfo) after crop multiple
         DispatchQueue.global(qos: .userInitiated).async {
             switch asset.mediaType {

@@ -54,6 +54,7 @@ final class YPCropView: UIView {
     private func setupViewHierarchy() {
         
         sv(
+            toolbar,
             containerView.sv(
                 imageView,
                 topCurtain,
@@ -62,8 +63,7 @@ final class YPCropView: UIView {
                 bottomCurtain,
                 cropArea,
                 grid
-            ),
-            toolbar
+            )
         )
     }
     
@@ -93,9 +93,9 @@ final class YPCropView: UIView {
         grid.followEdges(cropArea)
         
         layout(
-            0,
-            |containerView|,
-            |toolbar| ~ 44
+            |toolbar| ~ 44,
+             10,
+            |containerView|
         )
         
         layout(
@@ -107,9 +107,9 @@ final class YPCropView: UIView {
         )
     
         if #available(iOS 11.0, *) {
-            toolbar.Bottom == safeAreaLayoutGuide.Bottom
+            toolbar.Top == safeAreaLayoutGuide.Top
         } else {
-            toolbar.bottom(0)
+            toolbar.top(0)
         }
                 
         let complementRatio: CGFloat = CGFloat(1.0 / ratio)

@@ -34,7 +34,8 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
     
     var didSave: ((YPMediaItem) -> Void)?
     var didCancel: (() -> Void)?
-
+    @IBOutlet weak var toolbar: UIToolbar!
+    
     /// Designated initializer
     public class func initWith(video: YPMediaVideo,
                                isFromSelectionVC: Bool) -> YPVideoFiltersVC {
@@ -91,6 +92,7 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
             navigationItem.leftBarButtonItem?.setFont(font: YPConfig.fonts.leftBarButtonFont, forState: .normal)
         }
         setupRightBarButtonItem()
+        setToolBar()
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -113,13 +115,27 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
     }
     
     func setupRightBarButtonItem() {
-        let rightBarButtonTitle = isFromSelectionVC ? YPConfig.wordings.done : YPConfig.wordings.next
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightBarButtonTitle,
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(save))
+//        let rightBarButtonTitle = isFromSelectionVC ? YPConfig.wordings.done : YPConfig.wordings.next
+//        let rightBarButtonTitle = YPConfig.wordings.save
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightBarButtonTitle,
+//                                                            style: .done,
+//                                                            target: self,
+//                                                            action: #selector(save))
         navigationItem.rightBarButtonItem?.tintColor = YPConfig.colors.tintColor
         navigationItem.rightBarButtonItem?.setFont(font: YPConfig.fonts.rightBarButtonFont, forState: .normal)
+    }
+    
+    func setToolBar() {
+
+        let rightBarButtonTitle = YPConfig.wordings.save
+        let saveButtonItem = UIBarButtonItem(title: rightBarButtonTitle,
+                                             style: .done,
+                                             target: self,
+                                             action: #selector(save))
+        saveButtonItem.tintColor = .black
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        toolbar.items = [flexibleSpace, saveButtonItem]
     }
     
     // MARK: - Top buttons

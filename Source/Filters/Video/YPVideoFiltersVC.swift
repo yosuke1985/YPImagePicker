@@ -144,7 +144,7 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
         let cancelButtonItem = UIBarButtonItem(title: leftBarButtonTitle,
                                                style: .done,
                                              target: self,
-                                             action: #selector(cancel))
+                                             action: #selector(popVi))
         cancelButtonItem.tintColor = .black
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -199,6 +199,10 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
     
     @objc func cancel() {
         didCancel?()
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Bottom buttons

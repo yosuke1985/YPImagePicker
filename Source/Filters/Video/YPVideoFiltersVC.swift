@@ -144,7 +144,7 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
         let cancelButtonItem = UIBarButtonItem(title: leftBarButtonTitle,
                                                style: .done,
                                              target: self,
-                                             action: #selector(popVi))
+                                             action: #selector(popView))
         cancelButtonItem.tintColor = .black
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

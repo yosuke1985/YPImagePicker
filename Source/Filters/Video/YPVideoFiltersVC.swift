@@ -123,6 +123,12 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
 //                                                            action: #selector(save))
         navigationItem.rightBarButtonItem?.tintColor = YPConfig.colors.tintColor
         navigationItem.rightBarButtonItem?.setFont(font: YPConfig.fonts.rightBarButtonFont, forState: .normal)
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: YPConfig.wordings.cancel,
+//                                                           style: .plain,
+//                                                           target: self,
+//                                                           action: #selector(cancel))
+//        navigationItem.leftBarButtonItem?.setFont(font: YPConfig.fonts.leftBarButtonFont, forState: .normal)
     }
     
     func setToolBar() {
@@ -133,9 +139,17 @@ public class YPVideoFiltersVC: UIViewController, IsMediaFilterVC {
                                              target: self,
                                              action: #selector(save))
         saveButtonItem.tintColor = .black
+        
+        let leftBarButtonTitle = YPConfig.wordings.cancel
+        let cancelButtonItem = UIBarButtonItem(title: leftBarButtonTitle,
+                                               style: .done,
+                                             target: self,
+                                             action: #selector(cancel))
+        cancelButtonItem.tintColor = .black
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
-        toolbar.items = [flexibleSpace, saveButtonItem]
+        toolbar.items = [cancelButtonItem, flexibleSpace, saveButtonItem]
     }
     
     // MARK: - Top buttons
